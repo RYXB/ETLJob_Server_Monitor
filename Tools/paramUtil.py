@@ -41,7 +41,7 @@ try:
     ETL_TIMING_PUSH_MI = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_TIMING_PUSH_MI')
     ETL_JOB_LIST = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_JOB_LIST')
 
-    # print(ETL_FLAG, ETL_URL, ETL_USER, ETL_PASSWORD, ETL_DD_TOKEN, ETL_TIMING_PUSH_H, ETL_TIMING_PUSH_MI, ETL_JOB_LIST)
+    # print(ETL_FLAG, ETL_URL, ETL_USER, ETL_PASSWORD, ETL_DD_TOKEN, ETL_DD_SECRET, ETL_TIMING_PUSH_H, ETL_TIMING_PUSH_MI, ETL_JOB_LIST)
 except Exception as reason:
     log.error("读取配置文件错误，参数初始化失败！")
     info = sys.exc_info()
