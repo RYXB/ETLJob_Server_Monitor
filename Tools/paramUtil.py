@@ -36,6 +36,7 @@ try:
     ETL_USER = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_USER')
     ETL_PASSWORD = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_PASSWORD')
     ETL_DD_TOKEN = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_DD_TOKEN')
+    ETL_DD_SECRET = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_DD_SECRET')
     ETL_TIMING_PUSH_H = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_TIMING_PUSH_H')
     ETL_TIMING_PUSH_MI = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_TIMING_PUSH_MI')
     ETL_JOB_LIST = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_JOB_LIST')

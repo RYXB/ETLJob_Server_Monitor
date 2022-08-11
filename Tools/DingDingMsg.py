@@ -53,9 +53,10 @@ class Messenger:
 
 if __name__ == "__main__":
     markdown_text = "\n".join(open("md_test.md", encoding="utf-8").readlines())
+    token = str(paramUtil.ETL_DD_TOKEN.split("=")[1])
     m = Messenger(
-        token=paramUtil.ETL_DD_TOKEN,
-        secret="SEC44482cd32eea0d068b46f3a1189e3af9124581b8217c0229079b17fd8338fece"
+        token=token,
+        secret=paramUtil.ETL_DD_SECRET
     )
     m.send_text("测试一下，今天天气不错")
     m.send_md("测试Markdown", markdown_text)
