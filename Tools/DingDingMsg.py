@@ -5,6 +5,7 @@ import hmac
 import os
 import time
 import requests
+from LoggerTools import log
 from urllib.parse import quote_plus
 import paramUtil
 
@@ -51,12 +52,17 @@ class Messenger:
             headers=self.headers
         )
 
-if __name__ == "__main__":
-    markdown_text = "\n".join(open("md_test.md", encoding="utf-8").readlines())
+def DD2MSG(context):
+    # markdown_text = "\n".join(open("md_test.md", encoding="utf-8").readlines())
     token = str(paramUtil.ETL_DD_TOKEN.split("=")[1])
+    secret = paramUtil.ETL_DD_SECRET
     m = Messenger(
         token=token,
-        secret=paramUtil.ETL_DD_SECRET
+        secret=secret
     )
-    m.send_text("测试一下，今天天气不错")
-    m.send_md("测试Markdown", markdown_text)
+    try:
+        m.send_text(context)
+        log.info("信息发送钉钉成功！")
+    except Exception:
+        log.info("信息发送钉钉失败！")
+    # m.send_md("测试Markdown", markdown_text)
