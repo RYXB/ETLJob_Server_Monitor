@@ -7,7 +7,7 @@ import time
 import requests
 from LoggerTools import log
 from urllib.parse import quote_plus
-import paramUtil
+import ParamUtil
 
 
 class Messenger:
@@ -53,9 +53,15 @@ class Messenger:
         )
 
 def DD2MSG(context):
+    """
+    发送DingDing消息
+    @param context: str, 消息内容
+    """
+
+    # 下注释为发送markdown文件实例
     # markdown_text = "\n".join(open("md_test.md", encoding="utf-8").readlines())
-    token = str(paramUtil.ETL_DD_TOKEN.split("=")[1])
-    secret = paramUtil.ETL_DD_SECRET
+    token = str(ParamUtil.ETL_DD_TOKEN.split("=")[1])
+    secret = ParamUtil.ETL_DD_SECRET
     m = Messenger(
         token=token,
         secret=secret
@@ -63,6 +69,7 @@ def DD2MSG(context):
     try:
         m.send_text(context)
         log.info("信息发送钉钉成功！")
-    except Exception:
+    except Exception as e:
         log.info("信息发送钉钉失败！")
+        print(e)
     # m.send_md("测试Markdown", markdown_text)

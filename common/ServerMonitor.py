@@ -4,6 +4,7 @@ import datetime
 from xlrd import open_workbook
 from xlutils.copy import copy
 import time
+import paramiko
 
 
 # 监控CPU信息

@@ -1,16 +1,15 @@
 import cx_Oracle
 import pandas as pd
-import paramUtil
+import ParamUtil
 import sys
 from LoggerTools import log
-from DingDingMsg import DD2MSG
 
 # python使用cx_Oracle直联oracle数据库
 # 下为具体配置流程：（注意版本号）
 # https://blog.csdn.net/qq_38135191/article/details/123775892
 
 def getETLinfo(etlJobList):
-    conn = cx_Oracle.connect(paramUtil.ETL_USER,paramUtil.ETL_PASSWORD,paramUtil.ETL_URL)
+    conn = cx_Oracle.connect(ParamUtil.ETL_USER, ParamUtil.ETL_PASSWORD, ParamUtil.ETL_URL)
     cursor = conn.cursor()
 
     jobList = etlJobList.split(",")
@@ -20,7 +19,7 @@ def getETLinfo(etlJobList):
     if jobList == ['']:
         log.error("ETL状态检查任务错误:未配置ETL_JOB_LIST参数")
     else:
-        log.info("ETL状态检查任务开始,当前任务为:" + paramUtil.ETL_JOB_LIST)
+        log.info("ETL状态检查任务开始,当前任务为:" + ParamUtil.ETL_JOB_LIST)
         for item in jobList:
             jobStr = jobStr +"'"+ item + "',"
 
