@@ -42,11 +42,8 @@ def etl_status_check():
                 log.info("信息：今日仓库批次执行成功!!")
                 DD2MSG(str("信息：今日仓库批次执行成功!!"))
             else:
-                DD2MSG(str(data[data['FLAG'] != "成功"]['FLAG']))
-
-
-        # print(data[data['FLAG'] == "成功"])
-        # print(data[data['FLAG'] != "成功"].empty)
+                for item in data[data['FLAG'] != "成功"]['FLAG'].values:
+                    DD2MSG(item)
 
     log.info("ETL任务检查完毕!")
 
