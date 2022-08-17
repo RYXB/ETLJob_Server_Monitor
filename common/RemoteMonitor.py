@@ -52,7 +52,6 @@ def mem_info(hostname,port,username,password):
     # DD2MSG("内存状态检测:"+"\n"+"可用内存:"+ str("%.2f" % (int(MemFree)/1024/1024)) +"GB" +"\n"+"内存利用率："+str("%.2f" % Rate_Mem)+"%")
     return (MemFree,Rate_Mem)
 
-
 """ 
 磁盘空间监控
 """
