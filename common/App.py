@@ -1,8 +1,8 @@
-from Py2Oracle import getETLinfo
+from ODBCConnect import getETLinfo
+from RemoteMonitor import check_server_status
 from LoggerTools import log
 from DingDingMsg import DD2MSG
 import ParamUtil
-import time
 
 
 def etl_status_check():
@@ -44,11 +44,17 @@ def etl_status_check():
             else:
                 for item in data[data['FLAG'] != "成功"][['TASKID','FLAG']].values:
                     DD2MSG(str(item))
-
     log.info("ETL任务检查完毕!")
+
+def  server_status_check():
+    log.info("开始检查SERVER任务!")
 
 if __name__ == '__main__':
 
     log.info("当前已开启ETL状态检查!")
     if(ParamUtil.ETL_FLAG.__eq__("true")):
         etl_status_check()
+
+    log.info("当前已开启服务器状态检查!")
+    if(ParamUtil.CHECK_FLAG.__eq__("true")):
+        check_server_status()

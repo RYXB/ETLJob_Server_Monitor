@@ -33,6 +33,7 @@ def getConfig(filename, section, option):
 try:
     ETL_FLAG = getConfig("config\jobAndStatus2DingDing.ini", 'ORACLE', 'ETL_FLAG')
     ETL_URL = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_URL')
+    ETL_DRIVER = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_DRIVER')
     ETL_USER = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_USER')
     ETL_PASSWORD = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_PASSWORD')
     ETL_DD_TOKEN = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_DD_TOKEN')
@@ -42,6 +43,10 @@ try:
     ETL_JOB_LIST = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_JOB_LIST')
 
     CHECK_FLAG = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'CHECK_FLAG')
+    SERVER_IP = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_IP')
+    SERVER_PORT = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_PORT')
+    SERVER_USER = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_USER')
+    SERVER_PASSWORD = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_PASSWORD')
 
     # print(ETL_FLAG, ETL_URL, ETL_USER, ETL_PASSWORD, ETL_DD_TOKEN, ETL_DD_SECRET, ETL_TIMING_PUSH_H, ETL_TIMING_PUSH_MI, ETL_JOB_LIST)
 except Exception as reason:

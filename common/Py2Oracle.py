@@ -4,6 +4,8 @@ import ParamUtil
 import sys
 from LoggerTools import log
 
+# ------------------------------------弃用
+
 # python使用cx_Oracle直联oracle数据库
 # 下为具体配置流程：（注意版本号）
 # https://blog.csdn.net/qq_38135191/article/details/123775892
