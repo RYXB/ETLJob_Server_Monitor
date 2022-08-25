@@ -2,6 +2,7 @@ import common.ParamUtil as ParamUtil
 from common.LoggerTools import log
 from common.RemoteMonitor import check_server_status
 from common.ETLMonitor import etl_status_check
+from common.DingDingMsg import DD2MSG
 
 if __name__ == '__main__':
 

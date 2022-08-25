@@ -28,6 +28,14 @@ def ssh_exec(hostname,port,username,password,command):
         ssh.close()  # 关闭连接
         log.info("SSH连接关闭！")
 
+"""
+获取主机名
+"""
+def hostname_info(hostname,port,username,password):
+    result = ssh_exec(hostname,port,username,password,'hostname')
+    res = str(result)[2:][:-3]
+    return res
+
 
 """
 内存监控
@@ -79,6 +87,9 @@ def disk_info(hostname,port,username,password):
 
 # 整合mem_info和disk_info方法，并输出至钉钉
 def mode_log_info(hostname, port, username, password):
+
+    # 获取host、memory、disk的信息
+    servername = hostname_info(hostname, port, username, password)
     mem = mem_info(hostname, port, username, password)
     disk = disk_info(hostname, port, username, password)
 
@@ -88,7 +99,7 @@ def mode_log_info(hostname, port, username, password):
     available = disk[0]
     disk_rate = disk[1]
 
-    DD2MSG("服务器"+hostname+" 内存状态检测:"+"\n"+"可用内存:"+ str("%.2f" % (int(MemFree)/1024/1024)) +"GB" +"\t"+"内存利用率："+str("%.2f" % Rate_Mem)+"%" +"\n"
+    DD2MSG("服务器"+servername+"\n"+" 内存状态检测:"+"\n"+"可用内存:"+ str("%.2f" % (int(MemFree)/1024/1024)) +"GB" +"\t"+"内存利用率："+str("%.2f" % Rate_Mem)+"%" +"\n"
            +"磁盘状态检测:"+"\n"+"可用磁盘:"+ str("%.2f" % (available/1024/1024)) +"GB" +"\t"+"磁盘使用率:"+str("%.2f" % disk_rate) + "%")
 
 # 将任务配置中多台服务器进行分割检测
