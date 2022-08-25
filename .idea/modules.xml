@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/bigdata_control.iml" filepath="$PROJECT_DIR$/.idea/bigdata_control.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/ETLJob_Server_Monitor.iml" filepath="$PROJECT_DIR$/.idea/ETLJob_Server_Monitor.iml" />
     </modules>
   </component>
 </project>
