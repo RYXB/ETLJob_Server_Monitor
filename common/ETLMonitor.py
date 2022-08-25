@@ -1,7 +1,7 @@
-from ODBCConnect import getETLinfo
-from LoggerTools import log
-from DingDingMsg import DD2MSG
-import ParamUtil
+from common.ODBCConnect import getETLinfo
+from common.LoggerTools import log
+from common.DingDingMsg import DD2MSG
+import common.ParamUtil as ParamUtil
 
 
 def etl_status_check():

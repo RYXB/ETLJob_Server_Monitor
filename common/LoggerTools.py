@@ -1,4 +1,5 @@
 import logging
+import sys
 from logging.handlers import TimedRotatingFileHandler
 
 
@@ -21,6 +22,7 @@ class Log(object):
         self.logger.warning(msg)
     def error(self, msg):
         self.logger.error(msg)
+        sys.exit(1)
 
     def init(self, mode):
         self.logger.setLevel(logging.DEBUG)

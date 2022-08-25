@@ -1,7 +1,7 @@
-import ParamUtil
-from LoggerTools import log
-from RemoteMonitor import check_server_status
-from ETLMonitor import etl_status_check
+import common.ParamUtil as ParamUtil
+from common.LoggerTools import log
+from common.RemoteMonitor import check_server_status
+from common.ETLMonitor import etl_status_check
 
 if __name__ == '__main__':
 

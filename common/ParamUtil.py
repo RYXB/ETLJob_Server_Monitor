@@ -1,6 +1,6 @@
 import os
 import configparser
-from LoggerTools import log
+from common.LoggerTools import log
 import sys
 
 # 读取配置文件

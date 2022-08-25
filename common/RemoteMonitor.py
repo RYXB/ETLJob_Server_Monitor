@@ -1,10 +1,10 @@
 import sys
-import ParamUtil
+import common.ParamUtil as ParamUtil
 import paramiko
 import re
-from LoggerTools import log
+from common.LoggerTools import log
 import pandas as pd
-from DingDingMsg import DD2MSG
+from common.DingDingMsg import DD2MSG
 
 
 def ssh_exec(hostname,port,username,password,command):

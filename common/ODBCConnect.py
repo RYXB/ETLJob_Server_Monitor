@@ -1,8 +1,8 @@
 import jaydebeapi
-import ParamUtil
+import common.ParamUtil as ParamUtil
 import pandas as pd
 import sys
-from LoggerTools import log
+from common.LoggerTools import log
 
 
 def getETLinfo(etlJobList):
@@ -12,6 +12,7 @@ def getETLinfo(etlJobList):
     username = ParamUtil.ETL_USER
     password = ParamUtil.ETL_PASSWORD
     jarFile = "../lib/ojdbc14.jar"
+    jarFile = "lib/ojdbc14.jar"
 
     jobList = etlJobList.split(",")
     jobStr = ""

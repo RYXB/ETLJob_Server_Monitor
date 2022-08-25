@@ -5,9 +5,9 @@ import hmac
 import os
 import time
 import requests
-from LoggerTools import log
+from common.LoggerTools import log
 from urllib.parse import quote_plus
-import ParamUtil
+import common.ParamUtil as ParamUtil
 
 
 class Messenger:
