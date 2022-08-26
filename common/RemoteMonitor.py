@@ -2,6 +2,7 @@ import sys
 import common.ParamUtil as ParamUtil
 import paramiko
 import re
+import time
 from common.LoggerTools import log
 import pandas as pd
 from common.DingDingMsg import DD2MSG
@@ -104,37 +105,53 @@ def mode_log_info(hostname, port, username, password):
 
 # 将任务配置中多台服务器进行分割检测
 def check_server_status():
+    log.info("开始服务器状态检查任务!")
+    # 获取当前日期 time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
+    sys_now_hour = time.strftime('%H', time.localtime())
+    sys_now_minute = time.strftime('%M', time.localtime())
 
-    hostname = ParamUtil.SERVER_IP.split(",")
-    port = ParamUtil.SERVER_PORT.split(",")
-    username = ParamUtil.SERVER_USER.split(",")
-    password = ParamUtil.SERVER_PASSWORD.split(",")
+    # 当小时数为10以下的且长度为1的转化为2位  eg: 9->09
+    if (int(ParamUtil.CHECK_SERVER_H) < 10 and len(ParamUtil.CHECK_SERVER_H) == 1):
+        ParamUtil.CHECK_SERVER_H = '0' + ParamUtil.CHECK_SERVER_H
+    # 当分钟数为10以下的且长度为1的转化为2位  eg: 9->09
+    if (int(ParamUtil.CHECK_SERVER_MI) < 10 and len(ParamUtil.CHECK_SERVER_MI) == 1):
+        ParamUtil.CHECK_SERVER_MI = '0' + ParamUtil.CHECK_SERVER_MI
 
-    hostnameStr = ""
-    portInt = ""
-    usernameStr = ""
-    passwordStr = ""
+    if (sys_now_hour.__eq__(ParamUtil.CHECK_SERVER_H) and sys_now_minute.__eq__(ParamUtil.CHECK_SERVER_MI)):
+        hostname = ParamUtil.SERVER_IP.split(",")
+        port = ParamUtil.SERVER_PORT.split(",")
+        username = ParamUtil.SERVER_USER.split(",")
+        password = ParamUtil.SERVER_PASSWORD.split(",")
 
-    # joblist拼接成jobstr  ['ETL_DW00', 'ETL_DW05'] -> 'ETL_DW00','ETL_DW05',
-    if hostname == [''] or port == [''] or username == [''] or password == ['']:
-        log.error("服务器状态检查任务错误:参数配置异常")
+        hostnameStr = ""
+        portInt = ""
+        usernameStr = ""
+        passwordStr = ""
+
+        # joblist拼接成jobstr  ['ETL_DW00', 'ETL_DW05'] -> 'ETL_DW00','ETL_DW05',
+        if hostname == [''] or port == [''] or username == [''] or password == ['']:
+            log.error("服务器状态检查任务错误:参数配置异常")
+        else:
+            log.info("服务器状态检查任务开始,当前服务器为:" + ParamUtil.SERVER_IP)
+            for item in hostname:
+                hostnameStr = hostnameStr + item + ","
+            for item in port:
+                portInt = portInt + item + ","
+            for item in username:
+                usernameStr = usernameStr + item + ","
+            for item in password:
+                passwordStr = passwordStr + item + ","
+
+        # 切片处理去掉最后一个,号
+        hostnameStr = hostnameStr[:len(hostnameStr) - 1].split(',')
+        portInt = portInt[:len(portInt) - 1].split(',')
+        usernameStr = usernameStr[:len(usernameStr) - 1].split(',')
+        passwordStr = passwordStr[:len(passwordStr) - 1].split(',')
+
+        # 调用 mode_log_info(hostname, port, username, password)检测服务器状态
+        for (hostname, port, username, password) in zip(hostnameStr, portInt, usernameStr, passwordStr):
+            mode_log_info(hostname, port, username, password)
+
     else:
-        log.info("服务器状态检查任务开始,当前服务器为:" + ParamUtil.SERVER_IP)
-        for item in hostname:
-            hostnameStr = hostnameStr + item + ","
-        for item in port:
-            portInt = portInt + item + ","
-        for item in username:
-            usernameStr = usernameStr + item + ","
-        for item in password:
-            passwordStr = passwordStr + item + ","
-
-    # 切片处理去掉最后一个,号
-    hostnameStr = hostnameStr[:len(hostnameStr) - 1].split(',')
-    portInt = portInt[:len(portInt) - 1].split(',')
-    usernameStr = usernameStr[:len(usernameStr) - 1].split(',')
-    passwordStr = passwordStr[:len(passwordStr) - 1].split(',')
-
-    # 调用 mode_log_info(hostname, port, username, password)检测服务器状态
-    for (hostname, port, username, password) in zip(hostnameStr, portInt, usernameStr, passwordStr):
-        mode_log_info(hostname, port, username, password)
+        log.info("服务器状态检查任务未到时间!")
+    log.info("服务器状态检查任务检查完毕!")

@@ -2,15 +2,16 @@ from common.ODBCConnect import getETLinfo
 from common.LoggerTools import log
 from common.DingDingMsg import DD2MSG
 import common.ParamUtil as ParamUtil
+import time
 
 
 def etl_status_check():
     log.info("开始检查ETL任务!")
     # 获取当前日期 time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-    # sys_now_hour = time.strftime('%H', time.localtime())
-    # sys_now_minute =  time.strftime('%M', time.localtime())
-    sys_now_hour = "07"
-    sys_now_minute = "00"
+    sys_now_hour = time.strftime('%H', time.localtime())
+    sys_now_minute =  time.strftime('%M', time.localtime())
+    # sys_now_hour = "07"
+    # sys_now_minute = "00"
 
     # 当小时数为10以下的且长度为1的转化为2位  eg: 9->09
     if(int(ParamUtil.ETL_TIMING_PUSH_H) < 10 and len(ParamUtil.ETL_TIMING_PUSH_H) == 1):
@@ -43,6 +44,9 @@ def etl_status_check():
             else:
                 for item in data[data['FLAG'] != "成功"][['TASKID','FLAG']].values:
                     DD2MSG(str(item))
+
+    else:
+        log.info("ETL任务未到时间!")
     log.info("ETL任务检查完毕!")
 
 

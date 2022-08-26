@@ -43,6 +43,8 @@ try:
     ETL_JOB_LIST = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_JOB_LIST')
 
     CHECK_FLAG = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'CHECK_FLAG')
+    CHECK_SERVER_H = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'CHECK_SERVER_H')
+    CHECK_SERVER_MI = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'CHECK_SERVER_MI')
     SERVER_IP = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_IP')
     SERVER_PORT = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_PORT')
     SERVER_USER = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_USER')
