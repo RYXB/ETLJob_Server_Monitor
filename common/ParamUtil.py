@@ -29,26 +29,27 @@ def getConfig(filename, section, option):
     return config
 
 
+configFilePath = "config\jobAndStatus2DingDing.ini"
 # 获取oracle配置信息
 try:
-    ETL_FLAG = getConfig("config\jobAndStatus2DingDing.ini", 'ORACLE', 'ETL_FLAG')
-    ETL_URL = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_URL')
-    ETL_DRIVER = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_DRIVER')
-    ETL_USER = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_USER')
-    ETL_PASSWORD = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_PASSWORD')
-    ETL_DD_TOKEN = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_DD_TOKEN')
-    ETL_DD_SECRET = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_DD_SECRET')
-    ETL_TIMING_PUSH_H = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_TIMING_PUSH_H')
-    ETL_TIMING_PUSH_MI = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_TIMING_PUSH_MI')
-    ETL_JOB_LIST = getConfig("config\jobAndStatus2DingDing.ini", "ORACLE", 'ETL_JOB_LIST')
+    ETL_FLAG = getConfig(configFilePath, 'ORACLE', 'ETL_FLAG')
+    ETL_URL = getConfig(configFilePath, "ORACLE", 'ETL_URL')
+    ETL_DRIVER = getConfig(configFilePath, "ORACLE", 'ETL_DRIVER')
+    ETL_USER = getConfig(configFilePath, "ORACLE", 'ETL_USER')
+    ETL_PASSWORD = getConfig(configFilePath, "ORACLE", 'ETL_PASSWORD')
+    ETL_DD_TOKEN = getConfig(configFilePath, "ORACLE", 'ETL_DD_TOKEN')
+    ETL_DD_SECRET = getConfig(configFilePath, "ORACLE", 'ETL_DD_SECRET')
+    ETL_TIMING_PUSH_H = getConfig(configFilePath, "ORACLE", 'ETL_TIMING_PUSH_H')
+    ETL_TIMING_PUSH_MI = getConfig(configFilePath, "ORACLE", 'ETL_TIMING_PUSH_MI')
+    ETL_JOB_LIST = getConfig(configFilePath, "ORACLE", 'ETL_JOB_LIST')
 
-    CHECK_FLAG = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'CHECK_FLAG')
-    CHECK_SERVER_H = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'CHECK_SERVER_H')
-    CHECK_SERVER_MI = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'CHECK_SERVER_MI')
-    SERVER_IP = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_IP')
-    SERVER_PORT = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_PORT')
-    SERVER_USER = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_USER')
-    SERVER_PASSWORD = getConfig("config\jobAndStatus2DingDing.ini", "SERVER", 'SERVER_PASSWORD')
+    CHECK_FLAG = getConfig(configFilePath, "SERVER", 'CHECK_FLAG')
+    CHECK_SERVER_H = getConfig(configFilePath, "SERVER", 'CHECK_SERVER_H')
+    CHECK_SERVER_MI = getConfig(configFilePath, "SERVER", 'CHECK_SERVER_MI')
+    SERVER_IP = getConfig(configFilePath, "SERVER", 'SERVER_IP')
+    SERVER_PORT = getConfig(configFilePath, "SERVER", 'SERVER_PORT')
+    SERVER_USER = getConfig(configFilePath, "SERVER", 'SERVER_USER')
+    SERVER_PASSWORD = getConfig(configFilePath, "SERVER", 'SERVER_PASSWORD')
 
     # print(ETL_FLAG, ETL_URL, ETL_USER, ETL_PASSWORD, ETL_DD_TOKEN, ETL_DD_SECRET, ETL_TIMING_PUSH_H, ETL_TIMING_PUSH_MI, ETL_JOB_LIST)
 except Exception as reason:

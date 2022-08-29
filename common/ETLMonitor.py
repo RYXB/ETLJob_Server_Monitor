@@ -13,14 +13,17 @@ def etl_status_check():
     # sys_now_hour = "07"
     # sys_now_minute = "00"
 
-    # 当小时数为10以下的且长度为1的转化为2位  eg: 9->09
-    if(int(ParamUtil.ETL_TIMING_PUSH_H) < 10 and len(ParamUtil.ETL_TIMING_PUSH_H) == 1):
-        ParamUtil.ETL_TIMING_PUSH_H = '0' + ParamUtil.ETL_TIMING_PUSH_H
-    # 当分钟数为10以下的且长度为1的转化为2位  eg: 9->09
-    if(int(ParamUtil.ETL_TIMING_PUSH_MI) < 10 and len(ParamUtil.ETL_TIMING_PUSH_MI) == 1):
-        ParamUtil.ETL_TIMING_PUSH_MI = '0' + ParamUtil.ETL_TIMING_PUSH_MI
+    hour_list =  ParamUtil.ETL_TIMING_PUSH_H.split(",")
+    minutes_list = ParamUtil.ETL_TIMING_PUSH_MI.split(",")
 
-    if(sys_now_hour.__eq__(ParamUtil.ETL_TIMING_PUSH_H) and sys_now_minute.__eq__(ParamUtil.ETL_TIMING_PUSH_MI)):
+    # # 当小时数为10以下的且长度为1的转化为2位  eg: 9->09
+    # if(int(ParamUtil.ETL_TIMING_PUSH_H) < 10 and len(ParamUtil.ETL_TIMING_PUSH_H) == 1):
+    #     ParamUtil.ETL_TIMING_PUSH_H = '0' + ParamUtil.ETL_TIMING_PUSH_H
+    # # 当分钟数为10以下的且长度为1的转化为2位  eg: 9->09
+    # if(int(ParamUtil.ETL_TIMING_PUSH_MI) < 10 and len(ParamUtil.ETL_TIMING_PUSH_MI) == 1):
+    #     ParamUtil.ETL_TIMING_PUSH_MI = '0' + ParamUtil.ETL_TIMING_PUSH_MI
+
+    if(hour_list.__contains__(sys_now_hour) and minutes_list.__contains__(sys_now_minute)):
         data = getETLinfo(ParamUtil.ETL_JOB_LIST)
         job_list = ""
 
@@ -48,5 +51,3 @@ def etl_status_check():
     else:
         log.info("ETL任务未到时间!")
     log.info("ETL任务检查完毕!")
-
-

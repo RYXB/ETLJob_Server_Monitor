@@ -7,7 +7,9 @@ from common.LoggerTools import log
 import pandas as pd
 from common.DingDingMsg import DD2MSG
 
-
+"""
+建立SSH连接，执行shell命令语句
+"""
 def ssh_exec(hostname,port,username,password,command):
     try:
         ssh = paramiko.SSHClient()  # 创建SSH对象
@@ -110,14 +112,10 @@ def check_server_status():
     sys_now_hour = time.strftime('%H', time.localtime())
     sys_now_minute = time.strftime('%M', time.localtime())
 
-    # 当小时数为10以下的且长度为1的转化为2位  eg: 9->09
-    if (int(ParamUtil.CHECK_SERVER_H) < 10 and len(ParamUtil.CHECK_SERVER_H) == 1):
-        ParamUtil.CHECK_SERVER_H = '0' + ParamUtil.CHECK_SERVER_H
-    # 当分钟数为10以下的且长度为1的转化为2位  eg: 9->09
-    if (int(ParamUtil.CHECK_SERVER_MI) < 10 and len(ParamUtil.CHECK_SERVER_MI) == 1):
-        ParamUtil.CHECK_SERVER_MI = '0' + ParamUtil.CHECK_SERVER_MI
+    hour_list = ParamUtil.CHECK_SERVER_H.split(",")
+    minutes_list = ParamUtil.CHECK_SERVER_MI.split(",")
 
-    if (sys_now_hour.__eq__(ParamUtil.CHECK_SERVER_H) and sys_now_minute.__eq__(ParamUtil.CHECK_SERVER_MI)):
+    if (hour_list.__contains__(sys_now_hour) and minutes_list.__contains__(sys_now_minute)):
         hostname = ParamUtil.SERVER_IP.split(",")
         port = ParamUtil.SERVER_PORT.split(",")
         username = ParamUtil.SERVER_USER.split(",")
