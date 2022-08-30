@@ -2,10 +2,13 @@ import sys
 import common.ParamUtil as ParamUtil
 import paramiko
 import re
-import time
 from common.LoggerTools import log
 import pandas as pd
 from common.DingDingMsg import DD2MSG
+import logging
+
+
+logging.getLogger("paramiko").setLevel(logging.ERROR)
 
 """
 建立SSH连接，执行shell命令语句
@@ -109,8 +112,10 @@ def mode_log_info(hostname, port, username, password):
 def check_server_status():
     log.info("开始服务器状态检查任务!")
     # 获取当前日期 time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-    sys_now_hour = time.strftime('%H', time.localtime())
-    sys_now_minute = time.strftime('%M', time.localtime())
+    # sys_now_hour = time.strftime('%H', time.localtime())
+    # sys_now_minute =  time.strftime('%M', time.localtime())
+    sys_now_hour = "07"
+    sys_now_minute = "00"
 
     hour_list = ParamUtil.CHECK_SERVER_H.split(",")
     minutes_list = ParamUtil.CHECK_SERVER_MI.split(",")

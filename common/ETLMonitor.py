@@ -8,10 +8,10 @@ import time
 def etl_status_check():
     log.info("开始检查ETL任务!")
     # 获取当前日期 time.strftime('%Y-%m-%d %H:%M:%S', time.localtime())
-    sys_now_hour = time.strftime('%H', time.localtime())
-    sys_now_minute =  time.strftime('%M', time.localtime())
-    # sys_now_hour = "07"
-    # sys_now_minute = "00"
+    # sys_now_hour = time.strftime('%H', time.localtime())
+    # sys_now_minute =  time.strftime('%M', time.localtime())
+    sys_now_hour = "07"
+    sys_now_minute = "00"
 
     hour_list =  ParamUtil.ETL_TIMING_PUSH_H.split(",")
     minutes_list = ParamUtil.ETL_TIMING_PUSH_MI.split(",")

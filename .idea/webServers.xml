@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="5358e81b-a0c0-4956-ab42-619c577dfbfe" name="Monitor">
+        <fileTransfer rootFolder="/root/ETLJob_Server_Monitor" accessType="SFTP" host="172.16.18.31" port="22" sshConfigId="c7a35ed0-9080-4bae-bfc3-77aaa9b15001" sshConfig="root@172.16.18.31:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>
