@@ -11,7 +11,7 @@ def getETLinfo(etlJobList):
     driver = ParamUtil.ETL_DRIVER
     username = ParamUtil.ETL_USER
     password = ParamUtil.ETL_PASSWORD
-    jarFile = "../lib/ojdbc14.jar"
+    # jarFile = "../lib/ojdbc14.jar"
     jarFile = "lib/ojdbc14.jar"
 
     jobList = etlJobList.split(",")
