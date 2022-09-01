@@ -84,9 +84,9 @@ def disk_info(hostname,port,username,password):
     rs = pd.DataFrame(rdd,columns=['Filesystem','1K-blocks','Used','Available','Use%','Mounted on'])
 
     # 磁盘使用率=(Used列数据之和)/(1K-blocks列数据之和)
-    used_sum = rs["Used"].astype("int").sum()
-    total_sum = rs["1K-blocks"].astype("int").sum()
-    available=rs["Available"].astype("int").sum()
+    used_sum = rs["Used"].astype("int64").sum()
+    total_sum = rs["1K-blocks"].astype("int64").sum()
+    available=rs["Available"].astype("int64").sum()
     disk_rate = (used_sum/total_sum) * 100
     # DD2MSG("磁盘状态检测:"+"\n"+"可用磁盘:"+ str("%.2f" % (available/1024/1024)) +"GB" +"\n"+"磁盘使用率:"+str("%.2f" % disk_rate) + "%")
     return (available,disk_rate)

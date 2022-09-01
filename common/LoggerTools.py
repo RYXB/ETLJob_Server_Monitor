@@ -1,7 +1,7 @@
 import logging
 import sys
 from logging.handlers import TimedRotatingFileHandler
-
+import time
 
 class Log(object):
 
@@ -59,13 +59,16 @@ class Log(object):
         '''
         # 输出到文件 -----------------------------------------------------------
         # 按文件大小输出
-        # file_handler = RotatingFileHandler(filename="my1.log", mode='a', maxBytes=1024 * 1024 * 5, backupCount=10, encoding='utf-8')  # 使用RotatingFileHandler类，滚动备份日志
+        # file_handler = RotatingFileHandler(filename="my1.logs", mode='a', maxBytes=1024 * 1024 * 5, backupCount=10, encoding='utf-8')  # 使用RotatingFileHandler类，滚动备份日志
         # 按时间输出
-        file_handler = TimedRotatingFileHandler(filename="my.log", when="D", interval=1, backupCount=10,
+        sys_now_year = time.strftime('%Y', time.localtime())
+        sys_now_month = time.strftime('%m', time.localtime())
+        sys_now_day = time.strftime('%d', time.localtime())
+        file_handler = TimedRotatingFileHandler(filename="logs/logfile"+"_"+sys_now_year+sys_now_month+sys_now_day+".logs", when="D", interval=1, backupCount=10,
                                                 encoding='utf-8')
         file_handler.setLevel(logging.DEBUG)
         file_handler.setFormatter(logging.Formatter(self.LOG_FORMAT))
         self.logger.addHandler(file_handler)
 
-log = Log(mode=Log.STAND)
+log = Log(mode=Log.ALL)
 

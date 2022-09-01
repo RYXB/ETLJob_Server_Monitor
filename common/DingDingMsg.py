@@ -15,7 +15,6 @@ class Messenger:
         self.timestamp = str(round(time.time() * 1000))
         self.URL = "https://oapi.dingtalk.com/robot/send"
         self.headers = {'Content-Type': 'application/json'}
-        self.verify = False
         secret = secret
         secret_enc = secret.encode('utf-8')
         string_to_sign = '{}\n{}'.format(self.timestamp, secret)
@@ -35,8 +34,7 @@ class Messenger:
             url=self.URL,
             data=json.dumps(data),
             params=self.params,
-            headers=self.headers,
-            verify=self.verify
+            headers=self.headers
         )
 
     def send_md(self, title, content):
@@ -51,8 +49,7 @@ class Messenger:
             url=self.URL,
             data=json.dumps(data),
             params=self.params,
-            headers=self.headers,
-            verify=self.verify
+            headers=self.headers
         )
 
 def DD2MSG(context):
